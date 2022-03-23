@@ -12,8 +12,10 @@ const MovieList = () => {
     const showMovies = movies.map((movie) => {
         return <Movie
             key={movie.id}
+            id={movie.id}
             className={styles['movie-wrapper']}
             src={movie.poster_path}
+            title={movie.title}
         >
         </Movie>
     })

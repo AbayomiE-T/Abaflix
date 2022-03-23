@@ -4,7 +4,8 @@ const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
         movies: [],
-        likedMovies: []
+        likedMovies: [],
+        selectedMovie: null
     },
 
     reducers: {
@@ -18,7 +19,18 @@ const moviesSlice = createSlice({
             const movie = action.payload;
 
             state.likedMovies.push(movie);
+        },
+
+        findMovie(state, action) {
+            const id = action.payload
+
+            const movie = state.movies.filter((movie) => {
+                return movie.id === id;
+            })[0];
+
+            state.selectedMovie = movie;
         }
+
     }
 })
 

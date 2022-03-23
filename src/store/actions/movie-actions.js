@@ -27,3 +27,9 @@ export const getMovies = () => {
         }
     }
 }
+
+export const findMovie = (id) => {
+    return (dispatch) => {
+        dispatch(moviesActions.findMovie(id));
+    }
+}

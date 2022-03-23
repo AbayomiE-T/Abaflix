@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getMovies());
-  }, [])
+  }, [dispatch])
 
   return (
     <Router>
@@ -29,7 +29,7 @@ function App() {
           <Route path="/liked">
             <LikedMovies />
           </Route>
-          <Route path="/detail">
+          <Route path="/detail/:id">
             <MovieDetail />
           </Route>
         </Switch>
