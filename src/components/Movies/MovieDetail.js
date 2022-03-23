@@ -3,7 +3,7 @@ import styles from './MovieDetail.module.css'
 
 import { useEffect } from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { findMovie } from '../../store/actions/movie-actions';
 
@@ -12,6 +12,7 @@ const baseUrl = 'https://image.tmdb.org/t/p/original';
 const MovieDetail = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     const selectedMovie = useSelector((state) => state.movies.selectedMovie);
 
@@ -30,7 +31,7 @@ const MovieDetail = () => {
                         <h1 className={styles["movie-title"]}>{selectedMovie.title}</h1>
                         <p className={styles.blurb}>{selectedMovie.overview}</p>
                         <button type="button" className={styles['like-button']}>Like</button>
-                        <button type="button">Go back</button>
+                        <button type="button" onClick={() => history.go(-1)}>Go back</button>
                     </section>
                 </div>}
         </>
