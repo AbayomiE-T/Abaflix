@@ -13,7 +13,8 @@
 }
 
 .nav-item{
-    color:#D72638
+    color:#D72638;
+    text-decoration: none;
 }
 
 .nav-item:nth-child(1){

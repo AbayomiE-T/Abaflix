@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './Header.module.css'
 
@@ -7,10 +8,10 @@ const Header = () => {
         <>
             <nav className={styles.navigation}>
                 <div className={styles['nav-item-container']}>
-                    <a className={styles['nav-item']}>
+                    <Link to="/" className={styles['nav-item']}>
                         <span className={styles.logo}>ABAFLIX</span>
-                    </a>
-                    <a className={styles['nav-item']}> Go to liked movies</a>
+                    </Link>
+                    <Link to="liked" className={styles['nav-item']}> Go to liked movies</Link>
                 </div>
             </nav>
         </>
