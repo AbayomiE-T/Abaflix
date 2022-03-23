@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+
+.navigation{
+    height: 50px;
+}
+
+.nav-item-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item{
+    color:#D72638
+}
+
+.logo{
+    font-family: 'Monoton', cursive;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.banner{
+    text-align: center;
+    margin-top: 50px;
+}

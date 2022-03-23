@@ -1,9 +1,10 @@
-import './App.css';
+import styles from './App.module.css';
+import Header from './components/Navigation/Header';
 
 function App() {
   return (
-    <div className="App">
-      <p>Henlo</p>
+    <div className={styles.app}>
+      <Header></Header>
     </div>
   );
 }
