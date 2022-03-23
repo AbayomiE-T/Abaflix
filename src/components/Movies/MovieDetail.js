@@ -1,10 +1,13 @@
 import React from 'react'
+import styles from './MovieDetail.module.css'
 
 import { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { findMovie } from '../../store/actions/movie-actions';
+
+const baseUrl = 'https://image.tmdb.org/t/p/original';
 
 const MovieDetail = () => {
 
@@ -17,7 +20,20 @@ const MovieDetail = () => {
     }, [dispatch, id])
 
     return (
-        <div>MovieDetail</div>
+        <>
+            {!!selectedMovie && <img className={styles['backdrop-poster']} src={`${baseUrl}/${selectedMovie.backdrop_path}`} alt={selectedMovie.title}></img>}
+
+            {!!selectedMovie &&
+
+                <div className={styles["cover-image"]}>
+                    <section className={styles["movie-detail"]}>
+                        <h1 className={styles["movie-title"]}>{selectedMovie.title}</h1>
+                        <p className={styles.blurb}>{selectedMovie.overview}</p>
+                        <button type="button" className={styles['like-button']}>Like</button>
+                        <button type="button">Go back</button>
+                    </section>
+                </div>}
+        </>
     )
 }
 
