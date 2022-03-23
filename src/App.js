@@ -8,6 +8,7 @@ import { getMovies } from './store/actions/movie-actions';
 import Header from './components/Navigation/Header';
 import MovieList from './components/Movies/MovieList';
 import LikedMovies from './components/Movies/LikedMovies';
+import MovieDetail from './components/Movies/MovieDetail';
 
 function App() {
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/liked">
             <LikedMovies />
+          </Route>
+          <Route path="/detail">
+            <MovieDetail />
           </Route>
         </Switch>
       </div>
