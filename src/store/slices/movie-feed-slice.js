@@ -11,7 +11,7 @@ const moviesSlice = createSlice({
         getMovies(state, action) {
             const movies = action.payload;
 
-            state.movies = movies;
+            state.movies = movies.results;
         },
 
         addToLikedMovies(state, action) {
