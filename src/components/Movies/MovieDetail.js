@@ -49,11 +49,11 @@ const MovieDetail = () => {
                         <p className={styles.blurb}>{selectedMovie.overview}</p>
                         <button
                             type="button"
-                            className={`${styles['like-button']} ${styles.button} ${isLiked() ? styles.liked : ''}`}
+                            className={`${styles.button} ${isLiked() ? styles.liked : ''}`}
                             onClick={likeToggleHandler}
                         >Like <i className={`${styles.icon} fa fa-thumbs-up`}></i></button>
                         <button
-                            className={`${styles['back-button']} ${styles.button}`}
+                            className={`${styles.button}`}
                             type="button"
                             onClick={() => history.go(-1)}>Go back <i className={`fa fa-angle-left ${styles.icon}`}></i></button>
                     </section>

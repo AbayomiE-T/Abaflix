@@ -16,8 +16,8 @@
 }
 
 .movie-detail{
-    padding: 2rem 0 0 2rem;
-     width: 40%;
+    margin: auto;
+    width: 90%;
 }
 
 .movie-title{
@@ -53,4 +53,12 @@
 
 .icon{
     padding-left: 0.5rem;
+}
+
+@media only screen and (min-width: 600px) {
+    .movie-detail{
+        padding: 2rem 0 0 2rem;
+        width: 40%;
+        margin: 0;
+    }
 }
