@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { findMovie } from '../../store/actions/movie-actions';
+import { addToLikes, findMovie } from '../../store/actions/movie-actions';
 
 const baseUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -30,7 +30,11 @@ const MovieDetail = () => {
                     <section className={styles["movie-detail"]}>
                         <h1 className={styles["movie-title"]}>{selectedMovie.title}</h1>
                         <p className={styles.blurb}>{selectedMovie.overview}</p>
-                        <button type="button" className={styles['like-button']}>Like</button>
+                        <button
+                            type="button"
+                            className={styles['like-button']}
+                            onClick={() => dispatch(addToLikes(selectedMovie))}
+                        >Like</button>
                         <button type="button" onClick={() => history.go(-1)}>Go back</button>
                     </section>
                 </div>}

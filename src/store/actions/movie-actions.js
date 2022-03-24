@@ -33,3 +33,9 @@ export const findMovie = (id) => {
         dispatch(moviesActions.findMovie(id));
     }
 }
+
+export const addToLikes = (movie) => {
+    return (dispatch) => {
+        dispatch(moviesActions.addToLikedMovies(movie));
+    }
+}
