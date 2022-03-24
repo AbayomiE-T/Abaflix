@@ -5,7 +5,10 @@ const moviesSlice = createSlice({
     initialState: {
         movies: localStorage.getItem('movies') ?
             JSON.parse(localStorage.getItem('movies')) : [],
-        likedMovies: [],
+
+        likedMovies: localStorage.getItem('likedMovies') ?
+            JSON.parse(localStorage.getItem('likedMovies')) : [],
+
         selectedMovie: localStorage.getItem('selectedMovie') ?
             JSON.parse(localStorage.getItem('selectedMovie')) : null
     },
@@ -23,6 +26,8 @@ const moviesSlice = createSlice({
             const movie = action.payload;
 
             state.likedMovies.push(movie);
+
+            cacheLikedMovies(state.likedMovies);
         },
 
         findMovie(state, action) {
@@ -46,6 +51,10 @@ const cacheSelectedMovie = (movie) => {
 
 const cacheMovieRequest = (movies) => {
     localStorage.setItem('movies', JSON.stringify(movies));
+}
+
+const cacheLikedMovies = (movies) => {
+    localStorage.setItem('likedMovies', JSON.stringify([...movies]));
 }
 
 export const moviesActions = moviesSlice.actions;
