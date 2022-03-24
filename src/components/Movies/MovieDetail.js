@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToLikes, findMovie } from '../../store/actions/movie-actions';
+import { addToLikes, findMovie, removeFromLikedMovies } from '../../store/actions/movie-actions';
 
 const baseUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -15,6 +15,23 @@ const MovieDetail = () => {
     const history = useHistory();
     const { id } = useParams();
     const selectedMovie = useSelector((state) => state.movies.selectedMovie);
+    const likedMovies = useSelector((state) => state.movies.likedMovies)
+
+    const isLiked = () => {
+        return likedMovies.find((movie) => movie.id === selectedMovie.id);
+    }
+
+    const likeToggleHandler = () => {
+
+        if (!isLiked()) {
+            dispatch(addToLikes(selectedMovie));
+        }
+
+        else {
+            dispatch(removeFromLikedMovies(selectedMovie.id));
+        }
+
+    }
 
     useEffect(() => {
         dispatch(findMovie(+id));
@@ -32,10 +49,13 @@ const MovieDetail = () => {
                         <p className={styles.blurb}>{selectedMovie.overview}</p>
                         <button
                             type="button"
-                            className={styles['like-button']}
-                            onClick={() => dispatch(addToLikes(selectedMovie))}
-                        >Like</button>
-                        <button type="button" onClick={() => history.go(-1)}>Go back</button>
+                            className={`${styles['like-button']} ${styles.button} ${isLiked() ? styles.liked : ''}`}
+                            onClick={likeToggleHandler}
+                        >Like <i className={`${styles.icon} fa fa-thumbs-up`}></i></button>
+                        <button
+                            className={`${styles['back-button']} ${styles.button}`}
+                            type="button"
+                            onClick={() => history.go(-1)}>Go back <i className={`fa fa-angle-left ${styles.icon}`}></i></button>
                     </section>
                 </div>}
         </>

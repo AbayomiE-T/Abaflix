@@ -39,3 +39,9 @@ export const addToLikes = (movie) => {
         dispatch(moviesActions.addToLikedMovies(movie));
     }
 }
+
+export const removeFromLikedMovies = (id) => {
+    return (dispatch) => {
+        dispatch(moviesActions.removeFromLikedMovies(id));
+    }
+}

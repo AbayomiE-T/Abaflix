@@ -40,6 +40,14 @@ const moviesSlice = createSlice({
             state.selectedMovie = movie;
 
             cacheSelectedMovie(state.selectedMovie);
+        },
+
+        removeFromLikedMovies(state, action) {
+            const id = action.payload
+
+            state.likedMovies = state.likedMovies.filter((movie) => movie.id !== id);
+
+            cacheLikedMovies(state.likedMovies);
         }
 
     }
