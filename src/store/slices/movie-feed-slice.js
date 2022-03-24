@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
-        movies: [],
+        movies: localStorage.getItem('movies') ?
+            JSON.parse(localStorage.getItem('movies')) : [],
         likedMovies: [],
-        selectedMovie: null
+        selectedMovie: localStorage.getItem('selectedMovie') ?
+            JSON.parse(localStorage.getItem('selectedMovie')) : null
     },
 
     reducers: {
@@ -13,6 +15,8 @@ const moviesSlice = createSlice({
             const movies = action.payload;
 
             state.movies = movies.results;
+
+            cacheMovieRequest(state.movies);
         },
 
         addToLikedMovies(state, action) {
@@ -29,10 +33,20 @@ const moviesSlice = createSlice({
             })[0];
 
             state.selectedMovie = movie;
+
+            cacheSelectedMovie(state.selectedMovie);
         }
 
     }
 })
+
+const cacheSelectedMovie = (movie) => {
+    localStorage.setItem('selectedMovie', JSON.stringify(movie));
+}
+
+const cacheMovieRequest = (movies) => {
+    localStorage.setItem('movies', JSON.stringify(movies));
+}
 
 export const moviesActions = moviesSlice.actions;
 
