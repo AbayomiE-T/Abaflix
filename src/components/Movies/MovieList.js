@@ -24,8 +24,8 @@ const MovieList = (props) => {
 
             <div className={styles['movie-list-content']}>
                 {!!showMovies.length && showMovies}
-                {!!showMovies.length || <p>Looks like this list is empty! :(</p>}
             </div>
+            {!!showMovies.length || <p className={styles['empty-list']}>Looks like this list is empty! :(</p>}
         </section>
     )
 }
