@@ -6,9 +6,9 @@ import { useDispatch } from 'react-redux';
 import { getMovies } from './store/actions/movie-actions';
 
 import Header from './components/Navigation/Header';
-import MovieList from './components/Movies/MovieList';
 import LikedMovies from './components/Movies/LikedMovies';
 import MovieDetail from './components/Movies/MovieDetail';
+import Movies from './components/Movies/Movies';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
         <Header></Header>
         <Switch>
           <Route exact path="/">
-            <MovieList />
+            <Movies />
           </Route>
           <Route path="/liked">
             <LikedMovies />

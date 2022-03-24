@@ -3,11 +3,9 @@ import styles from './MovieList.module.css'
 
 import Movie from './Movie'
 
-import { useSelector } from 'react-redux'
+const MovieList = (props) => {
 
-const MovieList = () => {
-
-    const movies = useSelector((state) => state.movies.movies);
+    const movies = props.movies;
 
     const showMovies = movies.map((movie) => {
         return <Movie
@@ -22,10 +20,11 @@ const MovieList = () => {
 
     return (
         <section>
-            <h1 className={styles.banner}>Let's go to the movies!</h1>
+            <h1 className={styles.banner}>{props.text}</h1>
 
             <div className={styles['movie-list-content']}>
-                {movies.length && showMovies}
+                {!!showMovies.length && showMovies}
+                {!!showMovies.length || <p>Looks like this list is empty! :(</p>}
             </div>
         </section>
     )
