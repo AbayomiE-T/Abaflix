@@ -11,7 +11,7 @@ const Header = () => {
                     <Link to="/" className={styles['nav-item']}>
                         <span className={styles.logo}>ABAFLIX</span>
                     </Link>
-                    <Link to="liked" className={styles['nav-item']}> Go to liked movies</Link>
+                    <Link to="liked" className={styles['nav-item']}> Go to favourites <i className="fa fa-angle-right"></i></Link>
                 </div>
             </nav>
         </>
