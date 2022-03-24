@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { showNavigateToFavourites } from '../../store/actions/header-ui-actions';
 import MovieList from './MovieList';
 
 const Movies = () => {
 
+    const dispatch = useDispatch();
+
     const movies = useSelector((state) => state.movies.movies);
+
+    useEffect(() => {
+        dispatch(showNavigateToFavourites())
+    }, [])
 
     return (
         <>
